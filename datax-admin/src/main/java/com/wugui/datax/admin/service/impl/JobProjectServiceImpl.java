@@ -24,6 +24,7 @@ public class JobProjectServiceImpl extends ServiceImpl<JobProjectMapper, JobProj
     @Override
     public IPage<JobProject> getProjectListPaging(Integer pageSize, Integer pageNo, String searchName) {
         Page<JobProject> page = new Page(pageNo, pageSize);
-        return jobProjectMapper.getProjectListPaging(page, searchName);
+        jobProjectMapper.getProjectListPaging(page, searchName);
+        return page;
     }
 }

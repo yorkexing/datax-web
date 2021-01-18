@@ -3,8 +3,6 @@ package com.wugui.datax.admin.core.handler;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.reflection.MetaObject;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -31,6 +29,7 @@ public class MybatisMetaObjectHandler implements MetaObjectHandler {
     }
 
     private String getCurrentUser() {
-        return SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+        //return SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+        return "admin1111";
     }
 }

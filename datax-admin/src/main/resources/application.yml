@@ -1,6 +1,3 @@
-server:
-  #port: 8080
-  port: ${server.port}
 spring:
   #数据源
   datasource:
@@ -12,19 +9,27 @@ spring:
     url: jdbc:mysql://${DB_HOST:127.0.0.1}:${DB_PORT:3306}/${DB_DATABASE:dataxweb}?serverTimezone=Asia/Shanghai&useLegacyDatetimeCode=false&useSSL=false&nullNamePatternMatchesAll=true&useUnicode=true&characterEncoding=UTF-8
     driver-class-name: com.mysql.jdbc.Driver
 
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+       initial-size: 5
+       max-active: 100
+       max-wait: 10000
+       min-idle: 10
+       stat-view-servlet.enabled: true
+       web-stat-filter.enabled: true
 
-    hikari:
-      ## 最小空闲连接数量
-      minimum-idle: 5
-      ## 空闲连接存活最大时间，默认600000（10分钟）
-      idle-timeout: 180000
-      ## 连接池最大连接数，默认是10
-      maximum-pool-size: 10
-      ## 数据库连接超时时间,默认30秒，即30000
-      connection-timeout: 30000
-      connection-test-query: SELECT 1
-      ##此属性控制池中连接的最长生命周期，值0表示无限生命周期，默认1800000即30分钟
-      max-lifetime: 1800000
+   #hikari:
+   #  ## 最小空闲连接数量
+   #  minimum-idle: 5
+   #  ## 空闲连接存活最大时间，默认600000（10分钟）
+   #  idle-timeout: 180000
+   #  ## 连接池最大连接数，默认是10
+   #  maximum-pool-size: 10
+   #  ## 数据库连接超时时间,默认30秒，即30000
+   #  connection-timeout: 30000
+   #  connection-test-query: SELECT 1
+   #  ##此属性控制池中连接的最长生命周期，值0表示无限生命周期，默认1800000即30分钟
+   #  max-lifetime: 1800000
 
   # datax-web email
   mail:
@@ -87,8 +92,7 @@ logging:
   #  com.wugui.datax.admin.mapper: info
 #path: ./data/applogs/admin
   level:
-    com.wugui.datax.admin.mapper: error
-    path: ${data.path}/applogs/admin
+    com.wugui.datax.admin.mapper: debug
 
 
 
